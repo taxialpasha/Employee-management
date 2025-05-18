@@ -2341,3 +2341,181 @@
     background: rgba(255, 196, 54, 0.4);
     transform: rotate(90deg);
 }
+
+
+.project-stages {
+    display: flex;
+    align-items: center;
+    margin: 15px 0;
+}
+.stage-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+.stage-circle {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.1);
+    border: 1px solid var(--gold);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 5px;
+    color: var(--text-light);
+}
+.stage-circle.active {
+    background-color: var(--gold);
+    color: var(--bg-dark);
+}
+.stage-line {
+    flex: 1;
+    height: 2px;
+    background-color: rgba(255, 255, 255, 0.1);
+    margin: 0 5px;
+}
+.stage-line.active {
+    background-color: var(--gold);
+}
+.stage-label {
+    font-size: 0.8rem;
+    color: var(--text-light);
+    max-width: 70px;
+}
+
+/* تنسيق مقرات الشركة */
+.office-card {
+    background: var(--bg-card);
+    border-radius: var(--border-radius-sm);
+    border: 1px solid var(--gold-medium);
+    padding: 15px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.office-card:hover {
+    border-color: var(--gold);
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(255, 196, 54, 0.15);
+}
+
+/* تنسيق الخريطة */
+#investmentMap {
+    border: 1px solid var(--gold-medium);
+    background-color: rgba(17, 24, 39, 0.8);
+}
+
+/* تنسيق أزرار التحكم في الخريطة */
+#adminMapControls {
+    display: flex;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+/* تنسيق للمعلومات في نافذة الخريطة */
+.marker-info-window {
+    direction: rtl; 
+    text-align: right; 
+    padding: 10px;
+    font-family: 'Tajawal', sans-serif;
+}
+
+.marker-info-window h3 {
+    color: #1a73e8; 
+    margin-bottom: 8px;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.marker-info-window p {
+    margin-bottom: 5px;
+    font-size: 14px;
+}
+
+/* تنسيق للعناوين في صفحة تفاصيل المشروع */
+.section-subtitle {
+    color: var(--gold);
+    margin-bottom: 10px;
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+/* تنسيق للمخاطر المحتملة */
+.risk-item {
+    margin-bottom: 8px;
+    color: var(--text-light);
+    display: flex;
+    align-items: flex-start;
+}
+
+.risk-item i {
+    color: var(--gold);
+    margin-left: 8px;
+    margin-top: 2px;
+}
+
+/* تنسيق لمراحل المشروع المتقدمة */
+.timeline-container {
+    margin: 20px 0;
+    position: relative;
+}
+
+.timeline-line {
+    position: absolute;
+    right: 15px;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background-color: rgba(255, 196, 54, 0.3);
+}
+
+.timeline-item {
+    position: relative;
+    padding-right: 40px;
+    margin-bottom: 20px;
+}
+
+.timeline-dot {
+    position: absolute;
+    right: 11px;
+    top: 0;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: var(--gold);
+}
+
+.timeline-dot.active {
+    background-color: var(--gold);
+}
+
+.timeline-dot.inactive {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+.timeline-content {
+    background-color: rgba(17, 24, 39, 0.5);
+    border: 1px solid rgba(255, 196, 54, 0.2);
+    border-radius: var(--border-radius-sm);
+    padding: 10px;
+}
+
+.timeline-date {
+    font-size: 0.8rem;
+    color: var(--gold);
+    margin-bottom: 5px;
+}
+
+.timeline-title {
+    font-weight: 600;
+    color: var(--text-white);
+    margin-bottom: 5px;
+}
+
+.timeline-description {
+    font-size: 0.9rem;
+    color: var(--text-light);
+}
