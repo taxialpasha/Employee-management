@@ -10,10 +10,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jsbarcode/3.11.5/JsBarcode.all.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/quagga@0.12.1/dist/quagga.min.js"></script>
-
-    <link href="style.css" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css">
     <style>
-       
+      
     </style>
 </head>
 <body>
@@ -53,308 +52,246 @@
             </div>
         </div>
     </div>
-<!-- تغيير حالة الصفحات لتظهر صفحة التطبيق مباشرة -->
-<div id="login-page" class="page"><!-- غير active --></div>
-<div id="app-page" class="page active"><!-- أضف active --></div>
-        <!-- Sidebar Toggle Button (Mobile) -->
-        <button id="sidebar-toggle" class="sidebar-toggle">
-            <i class="fas fa-bars"></i>
-        </button>
+    <!-- نهاية صفحة تسجيل الدخول -->
+    <!-- بداية صفحة التطبيق (مخفية في البداية) -->
+    <div id="app-page" class="page"><!-- لا تضف active هنا --></div>
+    <!-- Sidebar Toggle Button (Mobile) -->
+    <button id="sidebar-toggle" class="sidebar-toggle">
+        <i class="fas fa-bars"></i>
+    </button>
 
-        <!-- Sidebar -->
-        <div id="sidebar" class="sidebar">
-            <div class="sidebar-header">
-                <div class="sidebar-logo">
-                    <div class="sidebar-logo-icon">
-                        <i class="fas fa-user-tie"></i>
-                    </div>
-                    <span>HR System</span>
+    <!-- Sidebar -->
+    <div id="sidebar" class="sidebar">
+        <div class="sidebar-header">
+            <div class="sidebar-logo">
+                <div class="sidebar-logo-icon">
+                    <i class="fas fa-user-tie"></i>
                 </div>
-                <div id="user-role-display">المدير</div>
+                <span>HR System</span>
             </div>
-            <ul class="sidebar-menu" id="main-menu">
-                <li class="sidebar-menu-item active" data-page="dashboard">
-                    <i class="fas fa-tachometer-alt"></i>
-                    <span>لوحة القيادة</span>
+            <div id="user-role-display">المدير</div>
+        </div>
+        <ul class="sidebar-menu" id="main-menu">
+            <li class="sidebar-menu-item active" data-page="dashboard">
+                <i class="fas fa-tachometer-alt"></i>
+                <span>لوحة القيادة</span>
+            </li>
+            <li class="sidebar-menu-item" data-submenu="employees">
+                <i class="fas fa-users"></i>
+                <span>إدارة الموظفين</span>
+                <i class="fas fa-chevron-left ml-auto"></i>
+            </li>
+            <ul class="sidebar-submenu" id="employees-submenu">
+                <li class="sidebar-submenu-item" data-page="employees-list">
+                    <span>قائمة الموظفين</span>
                 </li>
-                <li class="sidebar-menu-item" data-submenu="employees">
-                    <i class="fas fa-users"></i>
-                    <span>إدارة الموظفين</span>
-                    <i class="fas fa-chevron-left ml-auto"></i>
+                <li class="sidebar-submenu-item" data-page="add-employee">
+                    <span>إضافة موظف</span>
                 </li>
-                <ul class="sidebar-submenu" id="employees-submenu">
-                    <li class="sidebar-submenu-item" data-page="employees-list">
-                        <span>قائمة الموظفين</span>
-                    </li>
-                    <li class="sidebar-submenu-item" data-page="add-employee">
-                        <span>إضافة موظف</span>
-                    </li>
-                    <li class="sidebar-submenu-item" data-page="employee-categories">
-                        <span>تصنيفات الموظفين</span>
-                    </li>
-                </ul>
-                <li class="sidebar-menu-item" data-page="attendance">
-                    <i class="fas fa-clock"></i>
-                    <span>الحضور والانصراف</span>
-                </li>
-                <li class="sidebar-menu-item" data-page="attendance-reports">
-                    <i class="fas fa-clipboard-list"></i>
-                    <span>تقارير الحضور</span>
-                </li>
-                <li class="sidebar-menu-item" data-page="salaries">
-                    <i class="fas fa-money-bill-wave"></i>
-                    <span>الرواتب</span>
-                </li>
-                <li class="sidebar-menu-item" data-page="salary-reports">
-                    <i class="fas fa-chart-bar"></i>
-                    <span>تقارير الرواتب</span>
-                </li>
-                <li class="sidebar-menu-item" data-page="barcode">
-                    <i class="fas fa-barcode"></i>
-                    <span>إدارة البطاقات</span>
-                </li>
-                <li class="sidebar-menu-item" data-page="settings">
-                    <i class="fas fa-cog"></i>
-                    <span>الإعدادات</span>
-                </li>
-                <li class="sidebar-menu-item admin-only" data-page="users">
-                    <i class="fas fa-user-shield"></i>
-                    <span>إدارة المستخدمين</span>
-                </li>
-                <li class="sidebar-menu-item admin-only" data-page="logs">
-                    <i class="fas fa-history"></i>
-                    <span>سجلات النظام</span>
-                </li>
-                <li class="sidebar-menu-item" id="logout-btn">
-                    <i class="fas fa-sign-out-alt"></i>
-                    <span>تسجيل الخروج</span>
+                <li class="sidebar-submenu-item" data-page="employee-categories">
+                    <span>تصنيفات الموظفين</span>
                 </li>
             </ul>
-        </div>
+            <li class="sidebar-menu-item" data-page="attendance">
+                <i class="fas fa-clock"></i>
+                <span>الحضور والانصراف</span>
+            </li>
+            <li class="sidebar-menu-item" data-page="attendance-reports">
+                <i class="fas fa-clipboard-list"></i>
+                <span>تقارير الحضور</span>
+            </li>
+            <li class="sidebar-menu-item" data-page="salaries">
+                <i class="fas fa-money-bill-wave"></i>
+                <span>الرواتب</span>
+            </li>
+            <li class="sidebar-menu-item" data-page="salary-reports">
+                <i class="fas fa-chart-bar"></i>
+                <span>تقارير الرواتب</span>
+            </li>
+            <li class="sidebar-menu-item" data-page="barcode">
+                <i class="fas fa-barcode"></i>
+                <span>إدارة البطاقات</span>
+            </li>
+            <li class="sidebar-menu-item" data-page="settings">
+                <i class="fas fa-cog"></i>
+                <span>الإعدادات</span>
+            </li>
+            <li class="sidebar-menu-item admin-only" data-page="users">
+                <i class="fas fa-user-shield"></i>
+                <span>إدارة المستخدمين</span>
+            </li>
+            <li class="sidebar-menu-item admin-only" data-page="logs">
+                <i class="fas fa-history"></i>
+                <span>سجلات النظام</span>
+            </li>
+            <li class="sidebar-menu-item" id="logout-btn">
+                <i class="fas fa-sign-out-alt"></i>
+                <span>تسجيل الخروج</span>
+            </li>
+        </ul>
+    </div>
 
-        <!-- Main Content -->
-        <div id="main-content" class="main-content">
-            <!-- Header -->
-            <div class="header">
-                <div class="header-title" id="page-title">لوحة القيادة</div>
-                <div class="header-actions">
-                    <div class="search-bar">
-                        <input type="text" id="global-search" placeholder="بحث...">
-                        <i class="fas fa-search"></i>
+    <!-- Main Content -->
+    <div id="main-content" class="main-content">
+        <!-- Header -->
+        <div class="header">
+            <div class="header-title" id="page-title">لوحة القيادة</div>
+            <div class="header-actions">
+                <div class="search-bar">
+                    <input type="text" id="global-search" placeholder="بحث...">
+                    <i class="fas fa-search"></i>
+                </div>
+                <div class="user-profile" id="user-profile">
+                    <div class="user-avatar" id="user-avatar">
+                        <i class="fas fa-user"></i>
                     </div>
-                    <div class="user-profile" id="user-profile">
-                        <div class="user-avatar" id="user-avatar">
+                    <div class="user-info">
+                        <div class="user-name" id="user-display-name">مرحباً</div>
+                        <div class="user-role">المدير</div>
+                    </div>
+                    <i class="fas fa-chevron-down"></i>
+                    
+                    <div class="dropdown-menu" id="user-dropdown">
+                        <div class="dropdown-menu-item">
                             <i class="fas fa-user"></i>
+                            <span>الملف الشخصي</span>
                         </div>
-                        <div class="user-info">
-                            <div class="user-name" id="user-display-name">مرحباً</div>
-                            <div class="user-role">المدير</div>
+                        <div class="dropdown-menu-item">
+                            <i class="fas fa-cog"></i>
+                            <span>الإعدادات</span>
                         </div>
-                        <i class="fas fa-chevron-down"></i>
-                        
-                        <div class="dropdown-menu" id="user-dropdown">
-                            <div class="dropdown-menu-item">
-                                <i class="fas fa-user"></i>
-                                <span>الملف الشخصي</span>
-                            </div>
-                            <div class="dropdown-menu-item">
-                                <i class="fas fa-cog"></i>
-                                <span>الإعدادات</span>
-                            </div>
-                            <div class="dropdown-divider"></div>
-                            <div class="dropdown-menu-item" id="logout-btn-menu">
-                                <i class="fas fa-sign-out-alt"></i>
-                                <span>تسجيل الخروج</span>
-                            </div>
+                        <div class="dropdown-divider"></div>
+                        <div class="dropdown-menu-item" id="logout-btn-menu">
+                            <i class="fas fa-sign-out-alt"></i>
+                            <span>تسجيل الخروج</span>
                         </div>
                     </div>
                 </div>
             </div>
+        </div>
 
-            <!-- Content Area -->
-            <div class="content">
-                <!-- Dashboard Page -->
-                <div id="dashboard" class="page active">
-                    <h1 class="page-title">
-                        <i class="fas fa-tachometer-alt"></i>
-                        لوحة القيادة
-                    </h1>
-                    
-                    <div class="stats-grid">
-                        <div class="stats-card">
-                            <div class="stats-card-decoration decoration-primary"></div>
-                            <div class="stats-card-icon icon-primary">
-                                <i class="fas fa-users"></i>
-                            </div>
-                            <div class="stats-card-content">
-                                <div class="stats-card-value" id="total-employees">0</div>
-                                <div class="stats-card-label">إجمالي الموظفين</div>
-                            </div>
+        <!-- Content Area -->
+        <div class="content">
+            <!-- Dashboard Page -->
+            <div id="dashboard" class="page active">
+                <h1 class="page-title">
+                    <i class="fas fa-tachometer-alt"></i>
+                    لوحة القيادة
+                </h1>
+                
+                <div class="stats-grid">
+                    <div class="stats-card">
+                        <div class="stats-card-decoration decoration-primary"></div>
+                        <div class="stats-card-icon icon-primary">
+                            <i class="fas fa-users"></i>
                         </div>
-                        
-                        <div class="stats-card">
-                            <div class="stats-card-decoration decoration-success"></div>
-                            <div class="stats-card-icon icon-success">
-                                <i class="fas fa-user-check"></i>
-                            </div>
-                            <div class="stats-card-content">
-                                <div class="stats-card-value" id="present-today">0</div>
-                                <div class="stats-card-label">الحاضرون اليوم</div>
-                            </div>
-                        </div>
-                        
-                        <div class="stats-card">
-                            <div class="stats-card-decoration decoration-danger"></div>
-                            <div class="stats-card-icon icon-danger">
-                                <i class="fas fa-user-times"></i>
-                            </div>
-                            <div class="stats-card-content">
-                                <div class="stats-card-value" id="absent-today">0</div>
-                                <div class="stats-card-label">الغائبون اليوم</div>
-                            </div>
-                        </div>
-                        
-                        <div class="stats-card">
-                            <div class="stats-card-decoration decoration-warning"></div>
-                            <div class="stats-card-icon icon-warning">
-                                <i class="fas fa-money-bill-wave"></i>
-                            </div>
-                            <div class="stats-card-content">
-                                <div class="stats-card-value" id="total-salaries">0</div>
-                                <div class="stats-card-label">إجمالي الرواتب</div>
-                            </div>
+                        <div class="stats-card-content">
+                            <div class="stats-card-value" id="total-employees">0</div>
+                            <div class="stats-card-label">إجمالي الموظفين</div>
                         </div>
                     </div>
                     
-                    <div class="card">
-                        <div class="card-header">
-                            <div class="card-title">
-                                <i class="fas fa-chart-line"></i>
-                                إحصائيات الحضور
-                            </div>
-                            <div class="card-actions">
-                                <button class="btn btn-sm btn-light">
-                                    <i class="fas fa-sync-alt"></i>
-                                    تحديث
-                                </button>
-                                <button class="btn btn-sm btn-primary">
-                                    <i class="fas fa-download"></i>
-                                    تصدير
-                                </button>
-                            </div>
+                    <div class="stats-card">
+                        <div class="stats-card-decoration decoration-success"></div>
+                        <div class="stats-card-icon icon-success">
+                            <i class="fas fa-user-check"></i>
                         </div>
-                        <div class="card-body">
-                            <div class="chart-container" id="attendance-chart">
-                                <!-- Chart will be rendered here -->
-                            </div>
+                        <div class="stats-card-content">
+                            <div class="stats-card-value" id="present-today">0</div>
+                            <div class="stats-card-label">الحاضرون اليوم</div>
                         </div>
                     </div>
                     
-                    <div class="grid grid-cols-2 gap-4">
-                        <div class="card">
-                            <div class="card-header">
-                                <div class="card-title">
-                                    <i class="fas fa-history"></i>
-                                    أحدث الإجراءات
-                                </div>
-                            </div>
-                            <div class="card-body">
-                                <div class="table-container">
-                                    <table class="table table-hover" id="recent-actions">
-                                        <thead>
-                                            <tr>
-                                                <th>الإجراء</th>
-                                                <th>المستخدم</th>
-                                                <th>التاريخ والوقت</th>
-                                                <th>التفاصيل</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <!-- ستتم تعبئة هذا الجدول ديناميكيًا -->
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
+                    <div class="stats-card">
+                        <div class="stats-card-decoration decoration-danger"></div>
+                        <div class="stats-card-icon icon-danger">
+                            <i class="fas fa-user-times"></i>
                         </div>
-                        
-                        <div class="card">
-                            <div class="card-header">
-                                <div class="card-title">
-                                    <i class="fas fa-user-plus"></i>
-                                    الموظفون الجدد
-                                </div>
-                            </div>
-                            <div class="card-body">
-                                <div class="table-container">
-                                    <table class="table table-hover" id="new-employees">
-                                        <thead>
-                                            <tr>
-                                                <th>الاسم</th>
-                                                <th>المسمى الوظيفي</th>
-                                                <th>القسم</th>
-                                                <th>تاريخ التعيين</th>
-                                                <th>الإجراءات</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <!-- ستتم تعبئة هذا الجدول ديناميكيًا -->
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
+                        <div class="stats-card-content">
+                            <div class="stats-card-value" id="absent-today">0</div>
+                            <div class="stats-card-label">الغائبون اليوم</div>
+                        </div>
+                    </div>
+                    
+                    <div class="stats-card">
+                        <div class="stats-card-decoration decoration-warning"></div>
+                        <div class="stats-card-icon icon-warning">
+                            <i class="fas fa-money-bill-wave"></i>
+                        </div>
+                        <div class="stats-card-content">
+                            <div class="stats-card-value" id="total-salaries">0</div>
+                            <div class="stats-card-label">إجمالي الرواتب</div>
                         </div>
                     </div>
                 </div>
                 
-                <!-- Employees List Page -->
-                <div id="employees-list" class="page">
-                    <h1 class="page-title">
-                        <i class="fas fa-users"></i>
-                        قائمة الموظفين
-                    </h1>
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-title">
+                            <i class="fas fa-chart-line"></i>
+                            إحصائيات الحضور
+                        </div>
+                        <div class="card-actions">
+                            <button class="btn btn-sm btn-light">
+                                <i class="fas fa-sync-alt"></i>
+                                تحديث
+                            </button>
+                            <button class="btn btn-sm btn-primary">
+                                <i class="fas fa-download"></i>
+                                تصدير
+                            </button>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="chart-container" id="attendance-chart">
+                            <!-- Chart will be rendered here -->
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="card-title">
+                                <i class="fas fa-history"></i>
+                                أحدث الإجراءات
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-container">
+                                <table class="table table-hover" id="recent-actions">
+                                    <thead>
+                                        <tr>
+                                            <th>الإجراء</th>
+                                            <th>المستخدم</th>
+                                            <th>التاريخ والوقت</th>
+                                            <th>التفاصيل</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <!-- ستتم تعبئة هذا الجدول ديناميكيًا -->
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
                     
                     <div class="card">
                         <div class="card-header">
                             <div class="card-title">
-                                <i class="fas fa-list"></i>
-                                الموظفون
-                            </div>
-                            <div class="card-actions">
-                                <button class="btn btn-primary" onclick="navigateTo('add-employee')">
-                                    <i class="fas fa-plus"></i>
-                                    إضافة موظف
-                                </button>
+                                <i class="fas fa-user-plus"></i>
+                                الموظفون الجدد
                             </div>
                         </div>
                         <div class="card-body">
-                            <div class="form-grid mb-4">
-                                <div class="form-group m-0">
-                                    <input type="text" id="employee-search" class="form-control" placeholder="بحث عن موظف...">
-                                </div>
-                                <div class="form-group m-0">
-                                    <select id="employee-filter" class="form-control">
-                                        <option value="">جميع الأقسام</option>
-                                        <option value="الإدارة">الإدارة</option>
-                                        <option value="الموارد البشرية">الموارد البشرية</option>
-                                        <option value="المالية">المالية</option>
-                                        <option value="تكنولوجيا المعلومات">تكنولوجيا المعلومات</option>
-                                        <option value="التسويق">التسويق</option>
-                                        <option value="المبيعات">المبيعات</option>
-                                        <option value="خدمة العملاء">خدمة العملاء</option>
-                                    </select>
-                                </div>
-                            </div>
                             <div class="table-container">
-                                <table class="table table-hover" id="employees-table">
+                                <table class="table table-hover" id="new-employees">
                                     <thead>
                                         <tr>
-                                            <th>الكود</th>
                                             <th>الاسم</th>
                                             <th>المسمى الوظيفي</th>
                                             <th>القسم</th>
                                             <th>تاريخ التعيين</th>
-                                            <th>الراتب</th>
-                                            <th>الحالة</th>
                                             <th>الإجراءات</th>
                                         </tr>
                                     </thead>
@@ -366,772 +303,35 @@
                         </div>
                     </div>
                 </div>
+            </div>
+            
+            <!-- Employees List Page -->
+            <div id="employees-list" class="page">
+                <h1 class="page-title">
+                    <i class="fas fa-users"></i>
+                    قائمة الموظفين
+                </h1>
                 
-                <!-- Add Employee Page -->
-                <div id="add-employee" class="page">
-                    <h1 class="page-title">
-                        <i class="fas fa-user-plus"></i>
-                        إضافة موظف جديد
-                    </h1>
-                    
-                    <div class="card">
-                        <div class="card-header">
-                            <div class="card-title">
-                                <i class="fas fa-id-card"></i>
-                                بيانات الموظف
-                            </div>
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-title">
+                            <i class="fas fa-list"></i>
+                            الموظفون
                         </div>
-                        <div class="card-body">
-                            <form id="employee-form">
-                                <input type="hidden" id="employee-id">
-                                
-                                <div class="tabs">
-                                    <div class="tab active" data-tab="basic-info">البيانات الأساسية</div>
-                                    <div class="tab" data-tab="job-info">المعلومات الوظيفية</div>
-                                    <div class="tab" data-tab="salary-info">الراتب والبدلات</div>
-                                    <div class="tab" data-tab="attendance-info">الدوام</div>
-                                </div>
-                                
-                                <div id="basic-info" class="tab-content active">
-                                    <div class="form-grid">
-                                        <div class="form-group">
-                                            <label for="employee-name" class="form-label">
-                                                <span class="form-required">*</span>
-                                                الاسم الكامل
-                                            </label>
-                                            <input type="text" id="employee-name" class="form-control" required>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="employee-national-id" class="form-label">
-                                                <span class="form-required">*</span>
-                                                الرقم الوطني / رقم الهوية
-                                            </label>
-                                            <input type="text" id="employee-national-id" class="form-control" required>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="employee-dob" class="form-label">تاريخ الميلاد</label>
-                                            <input type="date" id="employee-dob" class="form-control">
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="employee-gender" class="form-label">الجنس</label>
-                                            <select id="employee-gender" class="form-control">
-                                                <option value="ذكر">ذكر</option>
-                                                <option value="أنثى">أنثى</option>
-                                            </select>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="employee-phone" class="form-label">
-                                                <span class="form-required">*</span>
-                                                رقم الهاتف
-                                            </label>
-                                            <input type="tel" id="employee-phone" class="form-control" required>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="employee-email" class="form-label">البريد الإلكتروني</label>
-                                            <input type="email" id="employee-email" class="form-control">
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="employee-address" class="form-label">العنوان</label>
-                                        <textarea id="employee-address" class="form-control" rows="3"></textarea>
-                                    </div>
-                                </div>
-                                
-                                <div id="job-info" class="tab-content">
-                                    <div class="form-grid">
-                                        <div class="form-group">
-                                            <label for="employee-job-title" class="form-label">
-                                                <span class="form-required">*</span>
-                                                المسمى الوظيفي
-                                            </label>
-                                            <input type="text" id="employee-job-title" class="form-control" required>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="employee-department" class="form-label">
-                                                <span class="form-required">*</span>
-                                                القسم
-                                            </label>
-                                            <select id="employee-department" class="form-control" required>
-                                                <option value="">اختر القسم</option>
-                                                <option value="الإدارة">الإدارة</option>
-                                                <option value="الموارد البشرية">الموارد البشرية</option>
-                                                <option value="المالية">المالية</option>
-                                                <option value="تكنولوجيا المعلومات">تكنولوجيا المعلومات</option>
-                                                <option value="التسويق">التسويق</option>
-                                                <option value="المبيعات">المبيعات</option>
-                                                <option value="خدمة العملاء">خدمة العملاء</option>
-                                            </select>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="employee-join-date" class="form-label">
-                                                <span class="form-required">*</span>
-                                                تاريخ التعيين
-                                            </label>
-                                            <input type="date" id="employee-join-date" class="form-control" required>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="employee-type" class="form-label">
-                                                <span class="form-required">*</span>
-                                                نوع التوظيف
-                                            </label>
-                                            <select id="employee-type" class="form-control" required>
-                                                <option value="دوام كامل">دوام كامل</option>
-                                                <option value="دوام جزئي">دوام جزئي</option>
-                                                <option value="بالساعة">بالساعة</option>
-                                                <option value="مؤقت">مؤقت</option>
-                                            </select>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="employee-admin-order" class="form-label">رقم الأمر الإداري</label>
-                                            <input type="text" id="employee-admin-order" class="form-control">
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="employee-admin-order-date" class="form-label">تاريخ الأمر الإداري</label>
-                                            <input type="date" id="employee-admin-order-date" class="form-control">
-                                        </div>
-                                    </div>
-                                </div>
-                                
-                                <div id="salary-info" class="tab-content">
-                                    <div class="form-grid">
-                                        <div class="form-group">
-                                            <label for="employee-basic-salary" class="form-label">
-                                                <span class="form-required">*</span>
-                                                الراتب الأساسي
-                                            </label>
-                                            <input type="number" id="employee-basic-salary" class="form-control" required>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="employee-salary-type" class="form-label">طريقة احتساب الراتب</label>
-                                            <select id="employee-salary-type" class="form-control">
-                                                <option value="شهري">شهري</option>
-                                                <option value="بالساعة">بالساعة</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    
-                                    <div class="form-group">
-                                        <label class="form-label">العلاوات</label>
-                                        <div id="allowances-container">
-                                            <div class="form-grid mb-2">
-                                                <div class="form-group m-0">
-                                                    <input type="text" class="form-control allowance-name" placeholder="اسم العلاوة">
-                                                </div>
-                                                <div class="form-group m-0">
-                                                    <input type="number" class="form-control allowance-amount" placeholder="المبلغ">
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <button type="button" class="btn btn-sm btn-info mt-2" id="add-allowance">
-                                            <i class="fas fa-plus"></i>
-                                            إضافة علاوة
-                                        </button>
-                                    </div>
-                                    
-                                    <div class="form-group">
-                                        <label class="form-label">الاستقطاعات</label>
-                                        <div id="deductions-container">
-                                            <div class="form-grid mb-2">
-                                                <div class="form-group m-0">
-                                                    <input type="text" class="form-control deduction-name" placeholder="اسم الاستقطاع">
-                                                </div>
-                                                <div class="form-group m-0">
-                                                    <input type="number" class="form-control deduction-amount" placeholder="المبلغ">
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <button type="button" class="btn btn-sm btn-info mt-2" id="add-deduction">
-                                            <i class="fas fa-plus"></i>
-                                            إضافة استقطاع
-                                        </button>
-                                    </div>
-                                </div>
-                                
-                                <div id="attendance-info" class="tab-content">
-                                    <div class="form-grid">
-                                        <div class="form-group">
-                                            <label for="employee-work-hours" class="form-label">ساعات العمل اليومية</label>
-                                            <input type="number" id="employee-work-hours" class="form-control" value="8">
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="employee-work-days" class="form-label">أيام العمل الأسبوعية</label>
-                                            <input type="number" id="employee-work-days" class="form-control" value="5">
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="employee-check-in-time" class="form-label">وقت الحضور</label>
-                                            <input type="time" id="employee-check-in-time" class="form-control" value="08:00">
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="employee-check-out-time" class="form-label">وقت الانصراف</label>
-                                            <input type="time" id="employee-check-out-time" class="form-control" value="16:00">
-                                        </div>
-                                    </div>
-                                    
-                                    <div class="form-group">
-                                        <label for="employee-notes" class="form-label">ملاحظات</label>
-                                        <textarea id="employee-notes" class="form-control" rows="3"></textarea>
-                                    </div>
-                                </div>
-                                
-                                <div class="form-group">
-                                    <button type="submit" class="btn btn-primary">
-                                        <i class="fas fa-save"></i>
-                                        حفظ
-                                    </button>
-                                    <button type="button" class="btn btn-light" onclick="navigateTo('employees-list')">
-                                        <i class="fas fa-times"></i>
-                                        إلغاء
-                                    </button>
-                                </div>
-                            </form>
+                        <div class="card-actions">
+                            <button class="btn btn-primary" onclick="navigateTo('add-employee')">
+                                <i class="fas fa-plus"></i>
+                                إضافة موظف
+                            </button>
                         </div>
                     </div>
-                </div>
-                
-                <!-- Employee Categories Page -->
-                <div id="employee-categories" class="page">
-                    <h1 class="page-title">
-                        <i class="fas fa-tags"></i>
-                        تصنيفات الموظفين
-                    </h1>
-                    
-                    <div class="card">
-                        <div class="card-header">
-                            <div class="card-title">
-                                <i class="fas fa-list"></i>
-                                إدارة التصنيفات
+                    <div class="card-body">
+                        <div class="form-grid mb-4">
+                            <div class="form-group m-0">
+                                <input type="text" id="employee-search" class="form-control" placeholder="بحث عن موظف...">
                             </div>
-                            <div class="card-actions">
-                                <button class="btn btn-primary" id="add-category-btn">
-                                    <i class="fas fa-plus"></i>
-                                    إضافة تصنيف
-                                </button>
-                            </div>
-                        </div>
-                        <div class="card-body">
-                            <div class="table-container">
-                                <table class="table table-hover" id="categories-table">
-                                    <thead>
-                                        <tr>
-                                            <th>اسم التصنيف</th>
-                                            <th>الوصف</th>
-                                            <th>عدد الموظفين</th>
-                                            <th>الإجراءات</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <!-- ستتم تعبئة هذا الجدول ديناميكيًا -->
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Attendance Page -->
-                <div id="attendance" class="page">
-                    <h1 class="page-title">
-                        <i class="fas fa-clock"></i>
-                        تسجيل الحضور والانصراف
-                    </h1>
-                    
-                    <div class="card">
-                        <div class="card-header">
-                            <div class="card-title">
-                                <i class="fas fa-qrcode"></i>
-                                تسجيل بصمة الحضور/الانصراف
-                            </div>
-                        </div>
-                        <div class="card-body">
-                            <div class="attendance-scanner">
-                                <input type="text" id="attendance-barcode" class="scanner-input" placeholder="قم بمسح الباركود أو إدخال الرقم الوظيفي" autofocus>
-                                <button class="btn btn-primary">
-                                    <i class="fas fa-search"></i>
-                                    بحث
-                                </button>
-                                
-                                <div class="scanner-result" id="attendance-result">
-                                    <div id="attendance-message"></div>
-                                    <div id="attendance-details" class="mt-2"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="card">
-                        <div class="card-header">
-                            <div class="card-title">
-                                <i class="fas fa-list"></i>
-                                تسجيلات اليوم
-                            </div>
-                            <div class="card-actions">
-                                <button class="btn btn-sm btn-light">
-                                    <i class="fas fa-sync-alt"></i>
-                                    تحديث
-                                </button>
-                                <button class="btn btn-sm btn-primary">
-                                    <i class="fas fa-download"></i>
-                                    تصدير
-                                </button>
-                            </div>
-                        </div>
-                        <div class="card-body">
-                            <div class="table-container">
-                                <table class="table table-hover" id="today-attendance-table">
-                                    <thead>
-                                        <tr>
-                                            <th>الموظف</th>
-                                            <th>التاريخ</th>
-                                            <th>وقت الحضور</th>
-                                            <th>وقت الانصراف</th>
-                                            <th>الحالة</th>
-                                            <th>ملاحظات</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <!-- ستتم تعبئة هذا الجدول ديناميكيًا -->
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Attendance Reports Page -->
-                <div id="attendance-reports" class="page">
-                    <h1 class="page-title">
-                        <i class="fas fa-clipboard-list"></i>
-                        تقارير الحضور
-                    </h1>
-                    
-                    <div class="card">
-                        <div class="card-header">
-                            <div class="card-title">
-                                <i class="fas fa-filter"></i>
-                                فلترة التقارير
-                            </div>
-                        </div>
-                        <div class="card-body">
-                            <div class="report-filters">
-                                <div class="filter-item">
-                                    <label class="filter-label">من تاريخ</label>
-                                    <input type="date" id="attendance-date-from" class="filter-control">
-                                </div>
-                                <div class="filter-item">
-                                    <label class="filter-label">إلى تاريخ</label>
-                                    <input type="date" id="attendance-date-to" class="filter-control">
-                                </div>
-                                <div class="filter-item">
-                                    <label class="filter-label">الموظف</label>
-                                    <select id="attendance-employee" class="filter-control">
-                                        <option value="">جميع الموظفين</option>
-                                        <!-- ستتم تعبئة هذه القائمة ديناميكيًا -->
-                                    </select>
-                                </div>
-                                <div class="filter-item">
-                                    <label class="filter-label">القسم</label>
-                                    <select id="attendance-department" class="filter-control">
-                                        <option value="">جميع الأقسام</option>
-                                        <option value="الإدارة">الإدارة</option>
-                                        <option value="الموارد البشرية">الموارد البشرية</option>
-                                        <option value="المالية">المالية</option>
-                                        <option value="تكنولوجيا المعلومات">تكنولوجيا المعلومات</option>
-                                        <option value="التسويق">التسويق</option>
-                                        <option value="المبيعات">المبيعات</option>
-                                        <option value="خدمة العملاء">خدمة العملاء</option>
-                                    </select>
-                                </div>
-                                <div class="filter-item">
-                                    <label class="filter-label">الحالة</label>
-                                    <select id="attendance-status" class="filter-control">
-                                        <option value="">جميع الحالات</option>
-                                        <option value="حاضر">حاضر</option>
-                                        <option value="غائب">غائب</option>
-                                        <option value="متأخر">متأخر</option>
-                                        <option value="مغادرة مبكرة">مغادرة مبكرة</option>
-                                    </select>
-                                </div>
-                                <div class="filter-actions">
-                                    <button id="generate-attendance-report" class="btn btn-primary">
-                                        <i class="fas fa-search"></i>
-                                        إنشاء التقرير
-                                    </button>
-                                    <button id="print-attendance-report" class="btn btn-light">
-                                        <i class="fas fa-print"></i>
-                                        طباعة
-                                    </button>
-                                    <button id="export-attendance-report" class="btn btn-secondary">
-                                        <i class="fas fa-download"></i>
-                                        تصدير
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="card">
-                        <div class="card-header">
-                            <div class="card-title">
-                                <i class="fas fa-table"></i>
-                                نتائج التقرير
-                            </div>
-                        </div>
-                        <div class="card-body">
-                            <div class="table-container">
-                                <table class="table table-hover" id="attendance-report-table">
-                                    <thead>
-                                        <tr>
-                                            <th>الموظف</th>
-                                            <th>القسم</th>
-                                            <th>التاريخ</th>
-                                            <th>يوم الأسبوع</th>
-                                            <th>وقت الحضور</th>
-                                            <th>وقت الانصراف</th>
-                                            <th>ساعات العمل</th>
-                                            <th>الحالة</th>
-                                            <th>ملاحظات</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <!-- ستتم تعبئة هذا الجدول ديناميكيًا -->
-                                    </tbody>
-                                </table>
-                            </div>
-                            
-                            <div class="report-summary" id="attendance-report-summary">
-                                <!-- ستتم تعبئة هذا القسم ديناميكيًا -->
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Salaries Page -->
-                <div id="salaries" class="page">
-                    <h1 class="page-title">
-                        <i class="fas fa-money-bill-wave"></i>
-                        إدارة الرواتب
-                    </h1>
-                    
-                    <div class="card">
-                        <div class="card-header">
-                            <div class="card-title">
-                                <i class="fas fa-file-invoice-dollar"></i>
-                                إعداد كشف الرواتب
-                            </div>
-                        </div>
-                        <div class="card-body">
-                            <div class="form-grid">
-                                <div class="form-group">
-                                    <label for="salary-month" class="form-label">الشهر</label>
-                                    <select id="salary-month" class="form-control">
-                                        <option value="1">يناير</option>
-                                        <option value="2">فبراير</option>
-                                        <option value="3">مارس</option>
-                                        <option value="4">أبريل</option>
-                                        <option value="5">مايو</option>
-                                        <option value="6">يونيو</option>
-                                        <option value="7">يوليو</option>
-                                        <option value="8">أغسطس</option>
-                                        <option value="9">سبتمبر</option>
-                                        <option value="10">أكتوبر</option>
-                                        <option value="11">نوفمبر</option>
-                                        <option value="12">ديسمبر</option>
-                                    </select>
-                                </div>
-                                <div class="form-group">
-                                    <label for="salary-year" class="form-label">السنة</label>
-                                    <select id="salary-year" class="form-control">
-                                        <option value="2023">2023</option>
-                                        <option value="2024">2024</option>
-                                        <option value="2025" selected>2025</option>
-                                    </select>
-                                </div>
-                                <div class="form-group">
-                                    <label for="salary-department" class="form-label">القسم</label>
-                                    <select id="salary-department" class="form-control">
-                                        <option value="">جميع الأقسام</option>
-                                        <option value="الإدارة">الإدارة</option>
-                                        <option value="الموارد البشرية">الموارد البشرية</option>
-                                        <option value="المالية">المالية</option>
-                                        <option value="تكنولوجيا المعلومات">تكنولوجيا المعلومات</option>
-                                        <option value="التسويق">التسويق</option>
-                                        <option value="المبيعات">المبيعات</option>
-                                        <option value="خدمة العملاء">خدمة العملاء</option>
-                                    </select>
-                                </div>
-                                <div class="form-group flex items-end">
-                                    <button id="generate-salary-sheet" class="btn btn-primary">
-                                        <i class="fas fa-calculator"></i>
-                                        إنشاء كشف الرواتب
-                                    </button>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <button id="print-salary-sheet" class="btn btn-light">
-                                    <i class="fas fa-print"></i>
-                                    طباعة
-                                </button>
-                                <button id="export-salary-sheet" class="btn btn-secondary">
-                                    <i class="fas fa-download"></i>
-                                    تصدير
-                                </button>
-                                <button id="finalize-salary-sheet" class="btn btn-warning">
-                                    <i class="fas fa-check-double"></i>
-                                    اعتماد الكشف
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="card">
-                        <div class="card-header">
-                            <div class="card-title">
-                                <i class="fas fa-table"></i>
-                                كشف الرواتب
-                            </div>
-                        </div>
-                        <div class="card-body">
-                            <div class="table-container">
-                                <table class="table table-hover" id="salary-sheet-table">
-                                    <thead>
-                                        <tr>
-                                            <th>الموظف</th>
-                                            <th>القسم</th>
-                                            <th>المسمى الوظيفي</th>
-                                            <th>الراتب الأساسي</th>
-                                            <th>العلاوات</th>
-                                            <th>الاستقطاعات</th>
-                                            <th>الإجمالي</th>
-                                            <th>الإجراءات</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <!-- ستتم تعبئة هذا الجدول ديناميكيًا -->
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                        </div>
-                </div>
-                
-                <!-- Salary Reports Page -->
-                <div id="salary-reports" class="page">
-                    <h1 class="page-title">
-                        <i class="fas fa-chart-bar"></i>
-                        تقارير الرواتب
-                    </h1>
-                    
-                    <div class="card">
-                        <div class="card-header">
-                            <div class="card-title">
-                                <i class="fas fa-filter"></i>
-                                فلترة التقارير
-                            </div>
-                        </div>
-                        <div class="card-body">
-                            <div class="report-filters">
-                                <div class="filter-item">
-                                    <label class="filter-label">من شهر</label>
-                                    <select id="salary-report-from-month" class="filter-control">
-                                        <option value="1">يناير</option>
-                                        <option value="2">فبراير</option>
-                                        <option value="3">مارس</option>
-                                        <option value="4">أبريل</option>
-                                        <option value="5">مايو</option>
-                                        <option value="6">يونيو</option>
-                                        <option value="7">يوليو</option>
-                                        <option value="8">أغسطس</option>
-                                        <option value="9">سبتمبر</option>
-                                        <option value="10">أكتوبر</option>
-                                        <option value="11">نوفمبر</option>
-                                        <option value="12">ديسمبر</option>
-                                    </select>
-                                </div>
-                                <div class="filter-item">
-                                    <label class="filter-label">سنة</label>
-                                    <select id="salary-report-from-year" class="filter-control">
-                                        <option value="2023">2023</option>
-                                        <option value="2024">2024</option>
-                                        <option value="2025" selected>2025</option>
-                                    </select>
-                                </div>
-                                <div class="filter-item">
-                                    <label class="filter-label">إلى شهر</label>
-                                    <select id="salary-report-to-month" class="filter-control">
-                                        <option value="1">يناير</option>
-                                        <option value="2">فبراير</option>
-                                        <option value="3">مارس</option>
-                                        <option value="4">أبريل</option>
-                                        <option value="5">مايو</option>
-                                        <option value="6">يونيو</option>
-                                        <option value="7">يوليو</option>
-                                        <option value="8">أغسطس</option>
-                                        <option value="9">سبتمبر</option>
-                                        <option value="10">أكتوبر</option>
-                                        <option value="11">نوفمبر</option>
-                                        <option value="12">ديسمبر</option>
-                                    </select>
-                                </div>
-                                <div class="filter-item">
-                                    <label class="filter-label">سنة</label>
-                                    <select id="salary-report-to-year" class="filter-control">
-                                        <option value="2023">2023</option>
-                                        <option value="2024">2024</option>
-                                        <option value="2025" selected>2025</option>
-                                    </select>
-                                </div>
-                                <div class="filter-item">
-                                    <label class="filter-label">الموظف</label>
-                                    <select id="salary-report-employee" class="filter-control">
-                                        <option value="">جميع الموظفين</option>
-                                        <!-- ستتم تعبئة هذه القائمة ديناميكيًا -->
-                                    </select>
-                                </div>
-                                <div class="filter-item">
-                                    <label class="filter-label">القسم</label>
-                                    <select id="salary-report-department" class="filter-control">
-                                        <option value="">جميع الأقسام</option>
-                                        <option value="الإدارة">الإدارة</option>
-                                        <option value="الموارد البشرية">الموارد البشرية</option>
-                                        <option value="المالية">المالية</option>
-                                        <option value="تكنولوجيا المعلومات">تكنولوجيا المعلومات</option>
-                                        <option value="التسويق">التسويق</option>
-                                        <option value="المبيعات">المبيعات</option>
-                                        <option value="خدمة العملاء">خدمة العملاء</option>
-                                    </select>
-                                </div>
-                                <div class="filter-actions">
-                                    <button id="generate-salary-report" class="btn btn-primary">
-                                        <i class="fas fa-search"></i>
-                                        إنشاء التقرير
-                                    </button>
-                                    <button id="print-salary-report" class="btn btn-light">
-                                        <i class="fas fa-print"></i>
-                                        طباعة
-                                    </button>
-                                    <button id="export-salary-report" class="btn btn-secondary">
-                                        <i class="fas fa-download"></i>
-                                        تصدير
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="card">
-                        <div class="card-header">
-                            <div class="card-title">
-                                <i class="fas fa-chart-line"></i>
-                                رسم بياني
-                            </div>
-                        </div>
-                        <div class="card-body">
-                            <div class="chart-container" id="salary-chart">
-                                <!-- Chart will be rendered here -->
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="card">
-                        <div class="card-header">
-                            <div class="card-title">
-                                <i class="fas fa-table"></i>
-                                نتائج التقرير
-                            </div>
-                        </div>
-                        <div class="card-body">
-                            <div class="table-container">
-                                <table class="table table-hover" id="salary-report-table">
-                                    <thead>
-                                        <tr>
-                                            <th>الموظف</th>
-                                            <th>القسم</th>
-                                            <th>الشهر</th>
-                                            <th>السنة</th>
-                                            <th>الراتب الأساسي</th>
-                                            <th>العلاوات</th>
-                                            <th>الاستقطاعات</th>
-                                            <th>الإجمالي</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <!-- ستتم تعبئة هذا الجدول ديناميكيًا -->
-                                    </tbody>
-                                </table>
-                            </div>
-                            
-                            <div class="report-summary" id="salary-report-summary">
-                                <!-- ستتم تعبئة هذا القسم ديناميكيًا -->
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Barcode Page -->
-                <div id="barcode" class="page">
-                    <h1 class="page-title">
-                        <i class="fas fa-barcode"></i>
-                        إدارة البطاقات والباركود
-                    </h1>
-                    
-                    <div class="card">
-                        <div class="card-header">
-                            <div class="card-title">
-                                <i class="fas fa-id-card"></i>
-                                إنشاء بطاقة موظف
-                            </div>
-                        </div>
-                        <div class="card-body">
-                            <div class="form-grid">
-                                <div class="form-group">
-                                    <label for="barcode-employee" class="form-label">اختر الموظف</label>
-                                    <select id="barcode-employee" class="form-control">
-                                        <option value="">اختر الموظف</option>
-                                        <!-- ستتم تعبئة هذه القائمة ديناميكيًا -->
-                                    </select>
-                                </div>
-                                <div class="form-group">
-                                    <button id="generate-barcode" class="btn btn-primary">
-                                        <i class="fas fa-barcode"></i>
-                                        إنشاء الباركود
-                                    </button>
-                                    <button id="print-barcode" class="btn btn-light">
-                                        <i class="fas fa-print"></i>
-                                        طباعة البطاقة
-                                    </button>
-                                </div>
-                            </div>
-                            
-                            <div class="flex justify-center mt-4">
-                                <div id="barcode-container" class="barcode-card hidden">
-                                    <div class="barcode-header">
-                                        <div class="barcode-company">نظام إدارة الموظفين</div>
-                                        <div class="barcode-title">بطاقة موظف</div>
-                                    </div>
-                                    <div class="barcode-subtitle" id="employee-card-name"></div>
-                                    <div class="text-sm text-secondary mb-2" id="employee-card-title"></div>
-                                    <div class="text-sm text-secondary" id="employee-card-department"></div>
-                                    <div class="barcode-image" id="barcode-image"></div>
-                                    <div class="barcode-id" id="employee-card-id"></div>
-                                    <div class="barcode-footer">
-                                        استخدم هذه البطاقة لتسجيل الحضور والانصراف
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="card">
-                        <div class="card-header">
-                            <div class="card-title">
-                                <i class="fas fa-print"></i>
-                                طباعة بطاقات متعددة
-                            </div>
-                        </div>
-                        <div class="card-body">
-                            <div class="form-group">
-                                <label for="barcode-department" class="form-label">اختر القسم</label>
-                                <select id="barcode-department" class="form-control">
+                            <div class="form-group m-0">
+                                <select id="employee-filter" class="form-control">
                                     <option value="">جميع الأقسام</option>
                                     <option value="الإدارة">الإدارة</option>
                                     <option value="الموارد البشرية">الموارد البشرية</option>
@@ -1142,318 +342,1116 @@
                                     <option value="خدمة العملاء">خدمة العملاء</option>
                                 </select>
                             </div>
+                        </div>
+                        <div class="table-container">
+                            <table class="table table-hover" id="employees-table">
+                                <thead>
+                                    <tr>
+                                        <th>الكود</th>
+                                        <th>الاسم</th>
+                                        <th>المسمى الوظيفي</th>
+                                        <th>القسم</th>
+                                        <th>تاريخ التعيين</th>
+                                        <th>الراتب</th>
+                                        <th>الحالة</th>
+                                        <th>الإجراءات</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <!-- ستتم تعبئة هذا الجدول ديناميكيًا -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Add Employee Page -->
+            <div id="add-employee" class="page">
+                <h1 class="page-title">
+                    <i class="fas fa-user-plus"></i>
+                    إضافة موظف جديد
+                </h1>
+                
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-title">
+                            <i class="fas fa-id-card"></i>
+                            بيانات الموظف
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <form id="employee-form">
+                            <input type="hidden" id="employee-id">
+                            
+                            <div class="tabs">
+                                <div class="tab active" data-tab="basic-info">البيانات الأساسية</div>
+                                <div class="tab" data-tab="job-info">المعلومات الوظيفية</div>
+                                <div class="tab" data-tab="salary-info">الراتب والبدلات</div>
+                                <div class="tab" data-tab="attendance-info">الدوام</div>
+                            </div>
+                            
+                            <div id="basic-info" class="tab-content active">
+                                <div class="form-grid">
+                                    <div class="form-group">
+                                        <label for="employee-name" class="form-label">
+                                            <span class="form-required">*</span>
+                                            الاسم الكامل
+                                        </label>
+                                        <input type="text" id="employee-name" class="form-control" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="employee-national-id" class="form-label">
+                                            <span class="form-required">*</span>
+                                            الرقم الوطني / رقم الهوية
+                                        </label>
+                                        <input type="text" id="employee-national-id" class="form-control" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="employee-dob" class="form-label">تاريخ الميلاد</label>
+                                        <input type="date" id="employee-dob" class="form-control">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="employee-gender" class="form-label">الجنس</label>
+                                        <select id="employee-gender" class="form-control">
+                                            <option value="ذكر">ذكر</option>
+                                            <option value="أنثى">أنثى</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="employee-phone" class="form-label">
+                                            <span class="form-required">*</span>
+                                            رقم الهاتف
+                                        </label>
+                                        <input type="tel" id="employee-phone" class="form-control" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="employee-email" class="form-label">البريد الإلكتروني</label>
+                                        <input type="email" id="employee-email" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="employee-address" class="form-label">العنوان</label>
+                                    <textarea id="employee-address" class="form-control" rows="3"></textarea>
+                                </div>
+                            </div>
+                            
+                            <div id="job-info" class="tab-content">
+                                <div class="form-grid">
+                                    <div class="form-group">
+                                        <label for="employee-job-title" class="form-label">
+                                            <span class="form-required">*</span>
+                                            المسمى الوظيفي
+                                        </label>
+                                        <input type="text" id="employee-job-title" class="form-control" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="employee-department" class="form-label">
+                                            <span class="form-required">*</span>
+                                            القسم
+                                        </label>
+                                        <select id="employee-department" class="form-control" required>
+                                            <option value="">اختر القسم</option>
+                                            <option value="الإدارة">الإدارة</option>
+                                            <option value="الموارد البشرية">الموارد البشرية</option>
+                                            <option value="المالية">المالية</option>
+                                            <option value="تكنولوجيا المعلومات">تكنولوجيا المعلومات</option>
+                                            <option value="التسويق">التسويق</option>
+                                            <option value="المبيعات">المبيعات</option>
+                                            <option value="خدمة العملاء">خدمة العملاء</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="employee-join-date" class="form-label">
+                                            <span class="form-required">*</span>
+                                            تاريخ التعيين
+                                        </label>
+                                        <input type="date" id="employee-join-date" class="form-control" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="employee-type" class="form-label">
+                                            <span class="form-required">*</span>
+                                            نوع التوظيف
+                                        </label>
+                                        <select id="employee-type" class="form-control" required>
+                                            <option value="دوام كامل">دوام كامل</option>
+                                            <option value="دوام جزئي">دوام جزئي</option>
+                                            <option value="بالساعة">بالساعة</option>
+                                            <option value="مؤقت">مؤقت</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="employee-admin-order" class="form-label">رقم الأمر الإداري</label>
+                                        <input type="text" id="employee-admin-order" class="form-control">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="employee-admin-order-date" class="form-label">تاريخ الأمر الإداري</label>
+                                        <input type="date" id="employee-admin-order-date" class="form-control">
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div id="salary-info" class="tab-content">
+                                <div class="form-grid">
+                                    <div class="form-group">
+                                        <label for="employee-basic-salary" class="form-label">
+                                            <span class="form-required">*</span>
+                                            الراتب الأساسي
+                                        </label>
+                                        <input type="number" id="employee-basic-salary" class="form-control" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="employee-salary-type" class="form-label">طريقة احتساب الراتب</label>
+                                        <select id="employee-salary-type" class="form-control">
+                                            <option value="شهري">شهري</option>
+                                            <option value="بالساعة">بالساعة</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label class="form-label">العلاوات</label>
+                                    <div id="allowances-container">
+                                        <div class="form-grid mb-2">
+                                            <div class="form-group m-0">
+                                                <input type="text" class="form-control allowance-name" placeholder="اسم العلاوة">
+                                            </div>
+                                            <div class="form-group m-0">
+                                                <input type="number" class="form-control allowance-amount" placeholder="المبلغ">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <button type="button" class="btn btn-sm btn-info mt-2" id="add-allowance">
+                                        <i class="fas fa-plus"></i>
+                                        إضافة علاوة
+                                    </button>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label class="form-label">الاستقطاعات</label>
+                                    <div id="deductions-container">
+                                        <div class="form-grid mb-2">
+                                            <div class="form-group m-0">
+                                                <input type="text" class="form-control deduction-name" placeholder="اسم الاستقطاع">
+                                            </div>
+                                            <div class="form-group m-0">
+                                                <input type="number" class="form-control deduction-amount" placeholder="المبلغ">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <button type="button" class="btn btn-sm btn-info mt-2" id="add-deduction">
+                                        <i class="fas fa-plus"></i>
+                                        إضافة استقطاع
+                                    </button>
+                                </div>
+                            </div>
+                            
+                            <div id="attendance-info" class="tab-content">
+                                <div class="form-grid">
+                                    <div class="form-group">
+                                        <label for="employee-work-hours" class="form-label">ساعات العمل اليومية</label>
+                                        <input type="number" id="employee-work-hours" class="form-control" value="8">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="employee-work-days" class="form-label">أيام العمل الأسبوعية</label>
+                                        <input type="number" id="employee-work-days" class="form-control" value="5">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="employee-check-in-time" class="form-label">وقت الحضور</label>
+                                        <input type="time" id="employee-check-in-time" class="form-control" value="08:00">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="employee-check-out-time" class="form-label">وقت الانصراف</label>
+                                        <input type="time" id="employee-check-out-time" class="form-control" value="16:00">
+                                    </div>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="employee-notes" class="form-label">ملاحظات</label>
+                                    <textarea id="employee-notes" class="form-control" rows="3"></textarea>
+                                </div>
+                            </div>
+                            
                             <div class="form-group">
-                                <button id="generate-multiple-barcodes" class="btn btn-primary">
-                                    <i class="fas fa-barcode"></i>
-                                    إنشاء البطاقات
+                                <button type="submit" class="btn btn-primary">
+                                    <i class="fas fa-save"></i>
+                                    حفظ
                                 </button>
-                                <button id="print-multiple-barcodes" class="btn btn-light">
-                                    <i class="fas fa-print"></i>
-                                    طباعة البطاقات
+                                <button type="button" class="btn btn-light" onclick="navigateTo('employees-list')">
+                                    <i class="fas fa-times"></i>
+                                    إلغاء
                                 </button>
                             </div>
-                            <div id="multiple-barcodes-container" class="hidden flex flex-wrap gap-4 mt-4">
-                                <!-- ستتم تعبئة هذا القسم ديناميكيًا -->
+                        </form>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Employee Categories Page -->
+            <div id="employee-categories" class="page">
+                <h1 class="page-title">
+                    <i class="fas fa-tags"></i>
+                    تصنيفات الموظفين
+                </h1>
+                
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-title">
+                            <i class="fas fa-list"></i>
+                            إدارة التصنيفات
+                        </div>
+                        <div class="card-actions">
+                            <button class="btn btn-primary" id="add-category-btn">
+                                <i class="fas fa-plus"></i>
+                                إضافة تصنيف
+                            </button>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-container">
+                            <table class="table table-hover" id="categories-table">
+                                <thead>
+                                    <tr>
+                                        <th>اسم التصنيف</th>
+                                        <th>الوصف</th>
+                                        <th>عدد الموظفين</th>
+                                        <th>الإجراءات</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <!-- ستتم تعبئة هذا الجدول ديناميكيًا -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Attendance Page -->
+            <div id="attendance" class="page">
+                <h1 class="page-title">
+                    <i class="fas fa-clock"></i>
+                    تسجيل الحضور والانصراف
+                </h1>
+                
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-title">
+                            <i class="fas fa-qrcode"></i>
+                            تسجيل بصمة الحضور/الانصراف
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="attendance-scanner">
+                            <input type="text" id="attendance-barcode" class="scanner-input" placeholder="قم بمسح الباركود أو إدخال الرقم الوظيفي" autofocus>
+                            <button class="btn btn-primary">
+                                <i class="fas fa-search"></i>
+                                بحث
+                            </button>
+                            
+                            <div class="scanner-result" id="attendance-result">
+                                <div id="attendance-message"></div>
+                                <div id="attendance-details" class="mt-2"></div>
                             </div>
                         </div>
                     </div>
                 </div>
-                
-                <!-- Settings Page -->
-                <div id="settings" class="page">
-                    <h1 class="page-title">
-                        <i class="fas fa-cog"></i>
-                        إعدادات النظام
-                    </h1>
-                    
-                    <div class="tabs">
-                        <div class="tab active" data-tab="general-settings">إعدادات عامة</div>
-                        <div class="tab" data-tab="salary-settings">إعدادات الرواتب</div>
-                        <div class="tab" data-tab="system-settings">إعدادات النظام</div>
-                    </div>
-                    
-                    <div id="general-settings" class="tab-content active">
-                        <div class="card">
-                            <div class="card-header">
-                                <div class="card-title">
-                                    <i class="fas fa-cogs"></i>
-                                    إعدادات عامة
-                                </div>
-                            </div>
-                            <div class="card-body">
-                                <form id="general-settings-form">
-                                    <div class="form-grid">
-                                        <div class="form-group">
-                                            <label for="company-name" class="form-label">اسم المؤسسة</label>
-                                            <input type="text" id="company-name" class="form-control" value="شركة تكنولوجيا المعلومات">
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="company-address" class="form-label">عنوان المؤسسة</label>
-                                            <input type="text" id="company-address" class="form-control" value="الحلة، محافظة بابل، العراق">
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="company-phone" class="form-label">رقم الهاتف</label>
-                                            <input type="text" id="company-phone" class="form-control" value="+964 7801234567">
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="company-email" class="form-label">البريد الإلكتروني</label>
-                                            <input type="email" id="company-email" class="form-control" value="info@example.com">
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="company-logo" class="form-label">شعار المؤسسة</label>
-                                            <input type="file" id="company-logo" class="form-control">
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="system-language" class="form-label">لغة النظام</label>
-                                            <select id="system-language" class="form-control">
-                                                <option value="ar" selected>العربية</option>
-                                                <option value="en">الإنجليزية</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <button type="submit" class="btn btn-primary">
-                                            <i class="fas fa-save"></i>
-                                            حفظ الإعدادات
-                                        </button>
-                                    </div>
-                                </form>
-                            </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-title">
+                            <i class="fas fa-list"></i>
+                            تسجيلات اليوم
+                        </div>
+                        <div class="card-actions">
+                            <button class="btn btn-sm btn-light">
+                                <i class="fas fa-sync-alt"></i>
+                                تحديث
+                            </button>
+                            <button class="btn btn-sm btn-primary">
+                                <i class="fas fa-download"></i>
+                                تصدير
+                            </button>
                         </div>
                     </div>
-                    
-                    <div id="salary-settings" class="tab-content">
-                        <div class="card">
-                            <div class="card-header">
-                                <div class="card-title">
-                                    <i class="fas fa-money-bill-wave"></i>
-                                    إعدادات الرواتب
-                                </div>
-                            </div>
-                            <div class="card-body">
-                                <form id="salary-settings-form">
-                                    <div class="form-grid">
-                                        <div class="form-group">
-                                            <label for="default-work-hours" class="form-label">ساعات العمل الافتراضية</label>
-                                            <input type="number" id="default-work-hours" class="form-control" value="8">
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="default-work-days" class="form-label">أيام العمل الافتراضية</label>
-                                            <input type="number" id="default-work-days" class="form-control" value="5">
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="default-check-in" class="form-label">وقت الحضور الافتراضي</label>
-                                            <input type="time" id="default-check-in" class="form-control" value="08:00">
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="default-check-out" class="form-label">وقت الانصراف الافتراضي</label>
-                                            <input type="time" id="default-check-out" class="form-control" value="16:00">
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="overtime-rate" class="form-label">معدل احتساب الساعات الإضافية</label>
-                                            <input type="number" id="overtime-rate" class="form-control" value="1.5" step="0.1">
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="late-deduction" class="form-label">خصم التأخير (بالدقائق)</label>
-                                            <input type="number" id="late-deduction" class="form-control" value="30">
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="tax-rate" class="form-label">نسبة الضريبة (%)</label>
-                                            <input type="number" id="tax-rate" class="form-control" value="5" step="0.1">
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="social-insurance" class="form-label">نسبة التأمينات الاجتماعية (%)</label>
-                                            <input type="number" id="social-insurance" class="form-control" value="10" step="0.1">
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <button type="submit" class="btn btn-primary">
-                                            <i class="fas fa-save"></i>
-                                            حفظ الإعدادات
-                                        </button>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div id="system-settings" class="tab-content">
-                        <div class="card">
-                            <div class="card-header">
-                                <div class="card-title">
-                                    <i class="fas fa-shield-alt"></i>
-                                    إعدادات النظام
-                                </div>
-                            </div>
-                            <div class="card-body">
-                                <form id="system-settings-form">
-                                    <div class="form-grid">
-                                        <div class="form-group">
-                                            <label for="backup-frequency" class="form-label">تكرار النسخ الاحتياطي</label>
-                                            <select id="backup-frequency" class="form-control">
-                                                <option value="daily">يومي</option>
-                                                <option value="weekly" selected>أسبوعي</option>
-                                                <option value="monthly">شهري</option>
-                                            </select>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="backup-location" class="form-label">مكان النسخ الاحتياطي</label>
-                                            <input type="text" id="backup-location" class="form-control" value="localStorage">
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="session-timeout" class="form-label">مدة انتهاء الجلسة (بالدقائق)</label>
-                                            <input type="number" id="session-timeout" class="form-control" value="30">
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="data-retention" class="form-label">فترة الاحتفاظ بالبيانات (بالأيام)</label>
-                                            <input type="number" id="data-retention" class="form-control" value="365">
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <button type="submit" class="btn btn-primary">
-                                            <i class="fas fa-save"></i>
-                                            حفظ الإعدادات
-                                        </button>
-                                        <button type="button" id="backup-now" class="btn btn-info">
-                                            <i class="fas fa-download"></i>
-                                            عمل نسخة احتياطية الآن
-                                        </button>
-                                        <button type="button" id="restore-backup" class="btn btn-warning">
-                                            <i class="fas fa-upload"></i>
-                                            استعادة نسخة احتياطية
-                                        </button>
-                                    </div>
-                                </form>
-                            </div>
+                    <div class="card-body">
+                        <div class="table-container">
+                            <table class="table table-hover" id="today-attendance-table">
+                                <thead>
+                                    <tr>
+                                        <th>الموظف</th>
+                                        <th>التاريخ</th>
+                                        <th>وقت الحضور</th>
+                                        <th>وقت الانصراف</th>
+                                        <th>الحالة</th>
+                                        <th>ملاحظات</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <!-- ستتم تعبئة هذا الجدول ديناميكيًا -->
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                 </div>
+            </div>
+            
+            <!-- Attendance Reports Page -->
+            <div id="attendance-reports" class="page">
+                <h1 class="page-title">
+                    <i class="fas fa-clipboard-list"></i>
+                    تقارير الحضور
+                </h1>
                 
-                <!-- Users Page -->
-                <div id="users" class="page">
-                    <h1 class="page-title">
-                        <i class="fas fa-user-shield"></i>
-                        إدارة المستخدمين
-                    </h1>
-                    
-                    <div class="card">
-                        <div class="card-header">
-                            <div class="card-title">
-                                <i class="fas fa-users-cog"></i>
-                                المستخدمون
-                            </div>
-                            <div class="card-actions">
-                                <button class="btn btn-primary" id="add-user-btn">
-                                    <i class="fas fa-user-plus"></i>
-                                    إضافة مستخدم
-                                </button>
-                            </div>
-                        </div>
-                        <div class="card-body">
-                            <div class="table-container">
-                                <table class="table table-hover" id="users-table">
-                                    <thead>
-                                        <tr>
-                                            <th>اسم المستخدم</th>
-                                            <th>الاسم الكامل</th>
-                                            <th>البريد الإلكتروني</th>
-                                            <th>الدور</th>
-                                            <th>الحالة</th>
-                                            <th>تاريخ الإنشاء</th>
-                                            <th>الإجراءات</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <!-- ستتم تعبئة هذا الجدول ديناميكيًا -->
-                                    </tbody>
-                                </table>
-                            </div>
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-title">
+                            <i class="fas fa-filter"></i>
+                            فلترة التقارير
                         </div>
                     </div>
-                </div>
-                
-                <!-- Logs Page -->
-                <div id="logs" class="page">
-                    <h1 class="page-title">
-                        <i class="fas fa-history"></i>
-                        سجلات النظام
-                    </h1>
-                    
-                    <div class="card">
-                        <div class="card-header">
-                            <div class="card-title">
-                                <i class="fas fa-filter"></i>
-                                فلترة السجلات
+                    <div class="card-body">
+                        <div class="report-filters">
+                            <div class="filter-item">
+                                <label class="filter-label">من تاريخ</label>
+                                <input type="date" id="attendance-date-from" class="filter-control">
                             </div>
-                        </div>
-                        <div class="card-body">
-                            <div class="form-grid">
-                                <div class="form-group">
-                                    <label for="log-date-from" class="form-label">من تاريخ</label>
-                                    <input type="date" id="log-date-from" class="form-control">
-                                </div>
-                                <div class="form-group">
-                                    <label for="log-date-to" class="form-label">إلى تاريخ</label>
-                                    <input type="date" id="log-date-to" class="form-control">
-                                </div>
-                                <div class="form-group">
-                                    <label for="log-user" class="form-label">المستخدم</label>
-                                    <select id="log-user" class="form-control">
-                                        <option value="">جميع المستخدمين</option>
-                                        <!-- ستتم تعبئة هذه القائمة ديناميكيًا -->
-                                    </select>
-                                </div>
-                                <div class="form-group">
-                                    <label for="log-type" class="form-label">نوع السجل</label>
-                                    <select id="log-type" class="form-control">
-                                        <option value="">جميع الأنواع</option>
-                                        <option value="login">تسجيل دخول</option>
-                                        <option value="logout">تسجيل خروج</option>
-                                        <option value="create">إنشاء</option>
-                                        <option value="update">تحديث</option>
-                                        <option value="delete">حذف</option>
-                                        <option value="error">خطأ</option>
-                                    </select>
-                                </div>
+                            <div class="filter-item">
+                                <label class="filter-label">إلى تاريخ</label>
+                                <input type="date" id="attendance-date-to" class="filter-control">
                             </div>
-                            <div class="form-group">
-                                <button id="filter-logs" class="btn btn-primary">
+                            <div class="filter-item">
+                                <label class="filter-label">الموظف</label>
+                                <select id="attendance-employee" class="filter-control">
+                                    <option value="">جميع الموظفين</option>
+                                    <!-- ستتم تعبئة هذه القائمة ديناميكيًا -->
+                                </select>
+                            </div>
+                            <div class="filter-item">
+                                <label class="filter-label">القسم</label>
+                                <select id="attendance-department" class="filter-control">
+                                    <option value="">جميع الأقسام</option>
+                                    <option value="الإدارة">الإدارة</option>
+                                    <option value="الموارد البشرية">الموارد البشرية</option>
+                                    <option value="المالية">المالية</option>
+                                    <option value="تكنولوجيا المعلومات">تكنولوجيا المعلومات</option>
+                                    <option value="التسويق">التسويق</option>
+                                    <option value="المبيعات">المبيعات</option>
+                                    <option value="خدمة العملاء">خدمة العملاء</option>
+                                </select>
+                            </div>
+                            <div class="filter-item">
+                                <label class="filter-label">الحالة</label>
+                                <select id="attendance-status" class="filter-control">
+                                    <option value="">جميع الحالات</option>
+                                    <option value="حاضر">حاضر</option>
+                                    <option value="غائب">غائب</option>
+                                    <option value="متأخر">متأخر</option>
+                                    <option value="مغادرة مبكرة">مغادرة مبكرة</option>
+                                </select>
+                            </div>
+                            <div class="filter-actions">
+                                <button id="generate-attendance-report" class="btn btn-primary">
                                     <i class="fas fa-search"></i>
-                                    تطبيق الفلتر
+                                    إنشاء التقرير
                                 </button>
-                                <button id="export-logs" class="btn btn-secondary">
+                                <button id="print-attendance-report" class="btn btn-light">
+                                    <i class="fas fa-print"></i>
+                                    طباعة
+                                </button>
+                                <button id="export-attendance-report" class="btn btn-secondary">
                                     <i class="fas fa-download"></i>
                                     تصدير
                                 </button>
                             </div>
                         </div>
                     </div>
+                </div>
 
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-title">
+                            <i class="fas fa-table"></i>
+                            نتائج التقرير
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-container">
+                            <table class="table table-hover" id="attendance-report-table">
+                                <thead>
+                                    <tr>
+                                        <th>الموظف</th>
+                                        <th>القسم</th>
+                                        <th>التاريخ</th>
+                                        <th>يوم الأسبوع</th>
+                                        <th>وقت الحضور</th>
+                                        <th>وقت الانصراف</th>
+                                        <th>ساعات العمل</th>
+                                        <th>الحالة</th>
+                                        <th>ملاحظات</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <!-- ستتم تعبئة هذا الجدول ديناميكيًا -->
+                                </tbody>
+                            </table>
+                        </div>
+                        
+                        <div class="report-summary" id="attendance-report-summary">
+                            <!-- ستتم تعبئة هذا القسم ديناميكيًا -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Salaries Page -->
+            <div id="salaries" class="page">
+                <h1 class="page-title">
+                    <i class="fas fa-money-bill-wave"></i>
+                    إدارة الرواتب
+                </h1>
+                
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-title">
+                            <i class="fas fa-file-invoice-dollar"></i>
+                            إعداد كشف الرواتب
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label for="salary-month" class="form-label">الشهر</label>
+                                <select id="salary-month" class="form-control">
+                                    <option value="1">يناير</option>
+                                    <option value="2">فبراير</option>
+                                    <option value="3">مارس</option>
+                                    <option value="4">أبريل</option>
+                                    <option value="5">مايو</option>
+                                    <option value="6">يونيو</option>
+                                    <option value="7">يوليو</option>
+                                    <option value="8">أغسطس</option>
+                                    <option value="9">سبتمبر</option>
+                                    <option value="10">أكتوبر</option>
+                                    <option value="11">نوفمبر</option>
+                                    <option value="12">ديسمبر</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="salary-year" class="form-label">السنة</label>
+                                <select id="salary-year" class="form-control">
+                                    <option value="2023">2023</option>
+                                    <option value="2024">2024</option>
+                                    <option value="2025" selected>2025</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="salary-department" class="form-label">القسم</label>
+                                <select id="salary-department" class="form-control">
+                                    <option value="">جميع الأقسام</option>
+                                    <option value="الإدارة">الإدارة</option>
+                                    <option value="الموارد البشرية">الموارد البشرية</option>
+                                    <option value="المالية">المالية</option>
+                                    <option value="تكنولوجيا المعلومات">تكنولوجيا المعلومات</option>
+                                    <option value="التسويق">التسويق</option>
+                                    <option value="المبيعات">المبيعات</option>
+                                    <option value="خدمة العملاء">خدمة العملاء</option>
+                                </select>
+                            </div>
+                            <div class="form-group flex items-end">
+                                <button id="generate-salary-sheet" class="btn btn-primary">
+                                    <i class="fas fa-calculator"></i>
+                                    إنشاء كشف الرواتب
+                                </button>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <button id="print-salary-sheet" class="btn btn-light">
+                                <i class="fas fa-print"></i>
+                                طباعة
+                            </button>
+                            <button id="export-salary-sheet" class="btn btn-secondary">
+                                <i class="fas fa-download"></i>
+                                تصدير
+                            </button>
+                            <button id="finalize-salary-sheet" class="btn btn-warning">
+                                <i class="fas fa-check-double"></i>
+                                اعتماد الكشف
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-title">
+                            <i class="fas fa-table"></i>
+                            كشف الرواتب
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-container">
+                            <table class="table table-hover" id="salary-sheet-table">
+                                <thead>
+                                    <tr>
+                                        <th>الموظف</th>
+                                        <th>القسم</th>
+                                        <th>المسمى الوظيفي</th>
+                                        <th>الراتب الأساسي</th>
+                                        <th>العلاوات</th>
+                                        <th>الاستقطاعات</th>
+                                        <th>الإجمالي</th>
+                                        <th>الإجراءات</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <!-- ستتم تعبئة هذا الجدول ديناميكيًا -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    </div>
+            </div>
+            
+            <!-- Salary Reports Page -->
+            <div id="salary-reports" class="page">
+                <h1 class="page-title">
+                    <i class="fas fa-chart-bar"></i>
+                    تقارير الرواتب
+                </h1>
+                
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-title">
+                            <i class="fas fa-filter"></i>
+                            فلترة التقارير
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="report-filters">
+                            <div class="filter-item">
+                                <label class="filter-label">من شهر</label>
+                                <select id="salary-report-from-month" class="filter-control">
+                                    <option value="1">يناير</option>
+                                    <option value="2">فبراير</option>
+                                    <option value="3">مارس</option>
+                                    <option value="4">أبريل</option>
+                                    <option value="5">مايو</option>
+                                    <option value="6">يونيو</option>
+                                    <option value="7">يوليو</option>
+                                    <option value="8">أغسطس</option>
+                                    <option value="9">سبتمبر</option>
+                                    <option value="10">أكتوبر</option>
+                                    <option value="11">نوفمبر</option>
+                                    <option value="12">ديسمبر</option>
+                                </select>
+                            </div>
+                            <div class="filter-item">
+                                <label class="filter-label">سنة</label>
+                                <select id="salary-report-from-year" class="filter-control">
+                                    <option value="2023">2023</option>
+                                    <option value="2024">2024</option>
+                                    <option value="2025" selected>2025</option>
+                                </select>
+                            </div>
+                            <div class="filter-item">
+                                <label class="filter-label">إلى شهر</label>
+                                <select id="salary-report-to-month" class="filter-control">
+                                    <option value="1">يناير</option>
+                                    <option value="2">فبراير</option>
+                                    <option value="3">مارس</option>
+                                    <option value="4">أبريل</option>
+                                    <option value="5">مايو</option>
+                                    <option value="6">يونيو</option>
+                                    <option value="7">يوليو</option>
+                                    <option value="8">أغسطس</option>
+                                    <option value="9">سبتمبر</option>
+                                    <option value="10">أكتوبر</option>
+                                    <option value="11">نوفمبر</option>
+                                    <option value="12">ديسمبر</option>
+                                </select>
+                            </div>
+                            <div class="filter-item">
+                                <label class="filter-label">سنة</label>
+                                <select id="salary-report-to-year" class="filter-control">
+                                    <option value="2023">2023</option>
+                                    <option value="2024">2024</option>
+                                    <option value="2025" selected>2025</option>
+                                </select>
+                            </div>
+                            <div class="filter-item">
+                                <label class="filter-label">الموظف</label>
+                                <select id="salary-report-employee" class="filter-control">
+                                    <option value="">جميع الموظفين</option>
+                                    <!-- ستتم تعبئة هذه القائمة ديناميكيًا -->
+                                </select>
+                            </div>
+                            <div class="filter-item">
+                                <label class="filter-label">القسم</label>
+                                <select id="salary-report-department" class="filter-control">
+                                    <option value="">جميع الأقسام</option>
+                                    <option value="الإدارة">الإدارة</option>
+                                    <option value="الموارد البشرية">الموارد البشرية</option>
+                                    <option value="المالية">المالية</option>
+                                    <option value="تكنولوجيا المعلومات">تكنولوجيا المعلومات</option>
+                                    <option value="التسويق">التسويق</option>
+                                    <option value="المبيعات">المبيعات</option>
+                                    <option value="خدمة العملاء">خدمة العملاء</option>
+                                </select>
+                            </div>
+                            <div class="filter-actions">
+                                <button id="generate-salary-report" class="btn btn-primary">
+                                    <i class="fas fa-search"></i>
+                                    إنشاء التقرير
+                                </button>
+                                <button id="print-salary-report" class="btn btn-light">
+                                    <i class="fas fa-print"></i>
+                                    طباعة
+                                </button>
+                                <button id="export-salary-report" class="btn btn-secondary">
+                                    <i class="fas fa-download"></i>
+                                    تصدير
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-title">
+                            <i class="fas fa-chart-line"></i>
+                            رسم بياني
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="chart-container" id="salary-chart">
+                            <!-- Chart will be rendered here -->
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-title">
+                            <i class="fas fa-table"></i>
+                            نتائج التقرير
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-container">
+                            <table class="table table-hover" id="salary-report-table">
+                                <thead>
+                                    <tr>
+                                        <th>الموظف</th>
+                                        <th>القسم</th>
+                                        <th>الشهر</th>
+                                        <th>السنة</th>
+                                        <th>الراتب الأساسي</th>
+                                        <th>العلاوات</th>
+                                        <th>الاستقطاعات</th>
+                                        <th>الإجمالي</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <!-- ستتم تعبئة هذا الجدول ديناميكيًا -->
+                                </tbody>
+                            </table>
+                        </div>
+                        
+                        <div class="report-summary" id="salary-report-summary">
+                            <!-- ستتم تعبئة هذا القسم ديناميكيًا -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Barcode Page -->
+            <div id="barcode" class="page">
+                <h1 class="page-title">
+                    <i class="fas fa-barcode"></i>
+                    إدارة البطاقات والباركود
+                </h1>
+                
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-title">
+                            <i class="fas fa-id-card"></i>
+                            إنشاء بطاقة موظف
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label for="barcode-employee" class="form-label">اختر الموظف</label>
+                                <select id="barcode-employee" class="form-control">
+                                    <option value="">اختر الموظف</option>
+                                    <!-- ستتم تعبئة هذه القائمة ديناميكيًا -->
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <button id="generate-barcode" class="btn btn-primary">
+                                    <i class="fas fa-barcode"></i>
+                                    إنشاء الباركود
+                                </button>
+                                <button id="print-barcode" class="btn btn-light">
+                                    <i class="fas fa-print"></i>
+                                    طباعة البطاقة
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <div class="flex justify-center mt-4">
+                            <div id="barcode-container" class="barcode-card hidden">
+                                <div class="barcode-header">
+                                    <div class="barcode-company">نظام إدارة الموظفين</div>
+                                    <div class="barcode-title">بطاقة موظف</div>
+                                </div>
+                                <div class="barcode-subtitle" id="employee-card-name"></div>
+                                <div class="text-sm text-secondary mb-2" id="employee-card-title"></div>
+                                <div class="text-sm text-secondary" id="employee-card-department"></div>
+                                <div class="barcode-image" id="barcode-image"></div>
+                                <div class="barcode-id" id="employee-card-id"></div>
+                                <div class="barcode-footer">
+                                    استخدم هذه البطاقة لتسجيل الحضور والانصراف
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-title">
+                            <i class="fas fa-print"></i>
+                            طباعة بطاقات متعددة
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="form-group">
+                            <label for="barcode-department" class="form-label">اختر القسم</label>
+                            <select id="barcode-department" class="form-control">
+                                <option value="">جميع الأقسام</option>
+                                <option value="الإدارة">الإدارة</option>
+                                <option value="الموارد البشرية">الموارد البشرية</option>
+                                <option value="المالية">المالية</option>
+                                <option value="تكنولوجيا المعلومات">تكنولوجيا المعلومات</option>
+                                <option value="التسويق">التسويق</option>
+                                <option value="المبيعات">المبيعات</option>
+                                <option value="خدمة العملاء">خدمة العملاء</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <button id="generate-multiple-barcodes" class="btn btn-primary">
+                                <i class="fas fa-barcode"></i>
+                                إنشاء البطاقات
+                            </button>
+                            <button id="print-multiple-barcodes" class="btn btn-light">
+                                <i class="fas fa-print"></i>
+                                طباعة البطاقات
+                            </button>
+                        </div>
+                        <div id="multiple-barcodes-container" class="hidden flex flex-wrap gap-4 mt-4">
+                            <!-- ستتم تعبئة هذا القسم ديناميكيًا -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Settings Page -->
+            <div id="settings" class="page">
+                <h1 class="page-title">
+                    <i class="fas fa-cog"></i>
+                    إعدادات النظام
+                </h1>
+                
+                <div class="tabs">
+                    <div class="tab active" data-tab="general-settings">إعدادات عامة</div>
+                    <div class="tab" data-tab="salary-settings">إعدادات الرواتب</div>
+                    <div class="tab" data-tab="system-settings">إعدادات النظام</div>
+                </div>
+                
+                <div id="general-settings" class="tab-content active">
                     <div class="card">
                         <div class="card-header">
                             <div class="card-title">
-                                <i class="fas fa-list-alt"></i>
-                                سجلات النظام
+                                <i class="fas fa-cogs"></i>
+                                إعدادات عامة
                             </div>
                         </div>
                         <div class="card-body">
-                            <div class="table-container">
-                                <table class="table table-hover" id="logs-table">
-                                    <thead>
-                                        <tr>
-                                            <th>التاريخ والوقت</th>
-                                            <th>المستخدم</th>
-                                            <th>النوع</th>
-                                            <th>الإجراء</th>
-                                            <th>التفاصيل</th>
-                                            <th>عنوان IP</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <!-- ستتم تعبئة هذا الجدول ديناميكيًا -->
-                                    </tbody>
-                                </table>
+                            <form id="general-settings-form">
+                                <div class="form-grid">
+                                    <div class="form-group">
+                                        <label for="company-name" class="form-label">اسم المؤسسة</label>
+                                        <input type="text" id="company-name" class="form-control" value="شركة تكنولوجيا المعلومات">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="company-address" class="form-label">عنوان المؤسسة</label>
+                                        <input type="text" id="company-address" class="form-control" value="الحلة، محافظة بابل، العراق">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="company-phone" class="form-label">رقم الهاتف</label>
+                                        <input type="text" id="company-phone" class="form-control" value="+964 7801234567">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="company-email" class="form-label">البريد الإلكتروني</label>
+                                        <input type="email" id="company-email" class="form-control" value="info@example.com">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="company-logo" class="form-label">شعار المؤسسة</label>
+                                        <input type="file" id="company-logo" class="form-control">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="system-language" class="form-label">لغة النظام</label>
+                                        <select id="system-language" class="form-control">
+                                            <option value="ar" selected>العربية</option>
+                                            <option value="en">الإنجليزية</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <button type="submit" class="btn btn-primary">
+                                        <i class="fas fa-save"></i>
+                                        حفظ الإعدادات
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                
+                <div id="salary-settings" class="tab-content">
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="card-title">
+                                <i class="fas fa-money-bill-wave"></i>
+                                إعدادات الرواتب
                             </div>
+                        </div>
+                        <div class="card-body">
+                            <form id="salary-settings-form">
+                                <div class="form-grid">
+                                    <div class="form-group">
+                                        <label for="default-work-hours" class="form-label">ساعات العمل الافتراضية</label>
+                                        <input type="number" id="default-work-hours" class="form-control" value="8">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="default-work-days" class="form-label">أيام العمل الافتراضية</label>
+                                        <input type="number" id="default-work-days" class="form-control" value="5">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="default-check-in" class="form-label">وقت الحضور الافتراضي</label>
+                                        <input type="time" id="default-check-in" class="form-control" value="08:00">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="default-check-out" class="form-label">وقت الانصراف الافتراضي</label>
+                                        <input type="time" id="default-check-out" class="form-control" value="16:00">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="overtime-rate" class="form-label">معدل احتساب الساعات الإضافية</label>
+                                        <input type="number" id="overtime-rate" class="form-control" value="1.5" step="0.1">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="late-deduction" class="form-label">خصم التأخير (بالدقائق)</label>
+                                        <input type="number" id="late-deduction" class="form-control" value="30">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="tax-rate" class="form-label">نسبة الضريبة (%)</label>
+                                        <input type="number" id="tax-rate" class="form-control" value="5" step="0.1">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="social-insurance" class="form-label">نسبة التأمينات الاجتماعية (%)</label>
+                                        <input type="number" id="social-insurance" class="form-control" value="10" step="0.1">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <button type="submit" class="btn btn-primary">
+                                        <i class="fas fa-save"></i>
+                                        حفظ الإعدادات
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                
+                <div id="system-settings" class="tab-content">
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="card-title">
+                                <i class="fas fa-shield-alt"></i>
+                                إعدادات النظام
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <form id="system-settings-form">
+                                <div class="form-grid">
+                                    <div class="form-group">
+                                        <label for="backup-frequency" class="form-label">تكرار النسخ الاحتياطي</label>
+                                        <select id="backup-frequency" class="form-control">
+                                            <option value="daily">يومي</option>
+                                            <option value="weekly" selected>أسبوعي</option>
+                                            <option value="monthly">شهري</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="backup-location" class="form-label">مكان النسخ الاحتياطي</label>
+                                        <input type="text" id="backup-location" class="form-control" value="localStorage">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="session-timeout" class="form-label">مدة انتهاء الجلسة (بالدقائق)</label>
+                                        <input type="number" id="session-timeout" class="form-control" value="30">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="data-retention" class="form-label">فترة الاحتفاظ بالبيانات (بالأيام)</label>
+                                        <input type="number" id="data-retention" class="form-control" value="365">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <button type="submit" class="btn btn-primary">
+                                        <i class="fas fa-save"></i>
+                                        حفظ الإعدادات
+                                    </button>
+                                    <button type="button" id="backup-now" class="btn btn-info">
+                                        <i class="fas fa-download"></i>
+                                        عمل نسخة احتياطية الآن
+                                    </button>
+                                    <button type="button" id="restore-backup" class="btn btn-warning">
+                                        <i class="fas fa-upload"></i>
+                                        استعادة نسخة احتياطية
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Users Page -->
+            <div id="users" class="page">
+                <h1 class="page-title">
+                    <i class="fas fa-user-shield"></i>
+                    إدارة المستخدمين
+                </h1>
+                
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-title">
+                            <i class="fas fa-users-cog"></i>
+                            المستخدمون
+                        </div>
+                        <div class="card-actions">
+                            <button class="btn btn-primary" id="add-user-btn">
+                                <i class="fas fa-user-plus"></i>
+                                إضافة مستخدم
+                            </button>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-container">
+                            <table class="table table-hover" id="users-table">
+                                <thead>
+                                    <tr>
+                                        <th>اسم المستخدم</th>
+                                        <th>الاسم الكامل</th>
+                                        <th>البريد الإلكتروني</th>
+                                        <th>الدور</th>
+                                        <th>الحالة</th>
+                                        <th>تاريخ الإنشاء</th>
+                                        <th>الإجراءات</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <!-- ستتم تعبئة هذا الجدول ديناميكيًا -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Logs Page -->
+            <div id="logs" class="page">
+                <h1 class="page-title">
+                    <i class="fas fa-history"></i>
+                    سجلات النظام
+                </h1>
+                
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-title">
+                            <i class="fas fa-filter"></i>
+                            فلترة السجلات
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label for="log-date-from" class="form-label">من تاريخ</label>
+                                <input type="date" id="log-date-from" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label for="log-date-to" class="form-label">إلى تاريخ</label>
+                                <input type="date" id="log-date-to" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label for="log-user" class="form-label">المستخدم</label>
+                                <select id="log-user" class="form-control">
+                                    <option value="">جميع المستخدمين</option>
+                                    <!-- ستتم تعبئة هذه القائمة ديناميكيًا -->
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="log-type" class="form-label">نوع السجل</label>
+                                <select id="log-type" class="form-control">
+                                    <option value="">جميع الأنواع</option>
+                                    <option value="login">تسجيل دخول</option>
+                                    <option value="logout">تسجيل خروج</option>
+                                    <option value="create">إنشاء</option>
+                                    <option value="update">تحديث</option>
+                                    <option value="delete">حذف</option>
+                                    <option value="error">خطأ</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <button id="filter-logs" class="btn btn-primary">
+                                <i class="fas fa-search"></i>
+                                تطبيق الفلتر
+                            </button>
+                            <button id="export-logs" class="btn btn-secondary">
+                                <i class="fas fa-download"></i>
+                                تصدير
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-title">
+                            <i class="fas fa-list-alt"></i>
+                            سجلات النظام
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-container">
+                            <table class="table table-hover" id="logs-table">
+                                <thead>
+                                    <tr>
+                                        <th>التاريخ والوقت</th>
+                                        <th>المستخدم</th>
+                                        <th>النوع</th>
+                                        <th>الإجراء</th>
+                                        <th>التفاصيل</th>
+                                        <th>عنوان IP</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <!-- ستتم تعبئة هذا الجدول ديناميكيًا -->
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                 </div>
@@ -1719,11 +1717,9 @@
     <div class="print-section" id="print-section"></div>
 
     <!-- JavaScript -->
-    <script>
-        
+    <script src="app.js"></script>
+
   
 </script>
-        <script src="app.js"></script>
-
 </body>
 </html>

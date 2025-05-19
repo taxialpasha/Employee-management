@@ -5441,20 +5441,3 @@ document.addEventListener('scroll', resetInactivityTimer);
 
 
 
-
-</script>
-
-<script>
-// التحقق من تهيئة البيانات
-console.log('userData:', userData);
-console.log('ملف تسجيل الدخول تم تحميله');
-
-// إضافة وظيفة تسجيل دخول للاختبار
-function testLogin() {
-    console.log('محاولة تسجيل الدخول');
-    var username = 'admin';
-    var password = 'admin';
-    var result = login(username, password);
-    console.log('نتيجة تسجيل الدخول:', result);
-    console.log('المستخدم الحالي:', currentUser);
-}
